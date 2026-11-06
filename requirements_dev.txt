@@ -1,0 +1,6 @@
+-r requirements.txt
+
+pyinstaller
+black
+flake8
+pytest
