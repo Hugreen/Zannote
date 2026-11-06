@@ -10,11 +10,11 @@ import logging
 import glob
 import os
 
-from evaluate import evaluate_model
-from model import BCEDiceLoss
+from ai_models.zegg_counter.evaluate import evaluate_model
+from ai_models.zegg_counter.model import BCEDiceLoss
 from torch.utils.tensorboard import SummaryWriter
 from tqdm.auto import tqdm
-from config import (
+from ai_models.zegg_counter.config import (
     BATCH_SIZE, 
     NUM_WORKERS, 
     LEARNING_RATE, 
@@ -31,10 +31,10 @@ from config import (
     DICE_WEIGHT,
     MODEL_ARCHITECTURE
     )
-from version_manager import (
+from ai_models.zegg_counter.version_manager import (
     VersionManager
 )
-from augmentations import (
+from ai_models.zegg_counter.augmentations import (
     get_phase1_transform,
     get_phase2_transform
 )

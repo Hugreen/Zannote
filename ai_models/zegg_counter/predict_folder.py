@@ -2,14 +2,14 @@ from pathlib import Path
 
 import cv2
 
-from config import (
+from ai_models.zegg_counter.config import (
     PEAK_THRESHOLD,
     PEAK_MIN_DISTANCE
 )
 
-from peak_detection import detect_peaks
+from ai_models.zegg_counter.peak_detection import detect_peaks
 
-from summary_manager import (
+from ai_models.zegg_counter.summary_manager import (
     save_zannote_csv,
     update_summary
 )

@@ -9,13 +9,13 @@ import json
 from pathlib import Path
 from torch.utils.data import DataLoader
 
-from model import EggUNet # à modifier si anciennes versions
-from dataset import EggDataset
+from ai_models.zegg_counter.model import EggUNet # à modifier si anciennes versions
+from ai_models.zegg_counter.dataset import EggDataset
 
-from evaluate import evaluate_model
-from version_manager import VersionManager
+from ai_models.zegg_counter.evaluate import evaluate_model
+from ai_models.zegg_counter.version_manager import VersionManager
 
-from config import (
+from ai_models.zegg_counter.config import (
     TEST_IMAGE_PATH,
     TEST_LABEL_PATH,
     BATCH_SIZE,

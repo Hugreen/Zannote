@@ -4,10 +4,10 @@ Created on Fri Jun 26 23:39:29 2026
 @author: hugoz
 """
 import torch
-from model import EggUNet
-from trainer import Trainer
-from augmentations import get_phase1_transform
-from config import (
+from ai_models.zegg_counter.model import EggUNet
+from ai_models.zegg_counter.trainer import Trainer
+from ai_models.zegg_counter.augmentations import get_phase1_transform
+from ai_models.zegg_counter.config import (
     IMAGE_PATH, 
     TEST_IMAGE_PATH, 
     SPLIT_PATH, 
@@ -15,9 +15,9 @@ from config import (
     TRAIN_SPLIT,
     VAL_SPLIT
     )
-from dataset import EggDataset
-from version_manager import VersionManager
-from split_dataset import (
+from ai_models.zegg_counter.dataset import EggDataset
+from ai_models.zegg_counter.version_manager import VersionManager
+from ai_models.zegg_counter.split_dataset import (
     create_train_val_split
 )
 create_train_val_split()

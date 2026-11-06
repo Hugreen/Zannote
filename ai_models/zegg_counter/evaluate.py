@@ -5,8 +5,8 @@ Created on Sat Jun 27 19:16:23 2026
 """
 import torch
 import numpy as np
-from config import PEAK_THRESHOLD, PEAK_MIN_DISTANCE
-from peak_detection import detect_peaks
+from ai_models.zegg_counter.config import PEAK_THRESHOLD, PEAK_MIN_DISTANCE
+from ai_models.zegg_counter.peak_detection import detect_peaks
 def evaluate_model(
     model,
     dataloader,

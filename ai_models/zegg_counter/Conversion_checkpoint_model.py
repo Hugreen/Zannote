@@ -7,7 +7,7 @@ Created on Tue Jul  7 01:07:17 2026
 
 import torch
 
-from model import EggUNet
+from ai_models.zegg_counter.model import EggUNet
 
 checkpoint_path = r"D:\Downloads\checkpoint_epoch_18.pt"
 

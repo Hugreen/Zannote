@@ -6,7 +6,7 @@ Created on Tue Jun 23 10:04:38 2026
 """
 
 import albumentations as A
-from config import BORDER_MODE
+from ai_models.zegg_counter.config import BORDER_MODE
 
 
 # Première phase d'entrainement  == petites variations dans l'image

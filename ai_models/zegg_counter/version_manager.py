@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 
 from datetime import datetime
 
-from config import (
+from ai_models.zegg_counter.config import (
     MODEL_PATH
 )
 

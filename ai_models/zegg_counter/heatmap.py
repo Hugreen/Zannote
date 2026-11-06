@@ -8,7 +8,7 @@ Created on Tue Jun 23 10:03:52 2026
 # ai/heatmap.py
 
 import numpy as np
-from config import SIGMA, SIGMA_VAR
+from ai_models.zegg_counter.config import SIGMA, SIGMA_VAR
 
 
 def gaussian_2d(

@@ -15,11 +15,11 @@ import torch
 
 from torch.utils.data import Dataset
 
-from heatmap import generate_heatmap
+from ai_models.zegg_counter.heatmap import generate_heatmap
 
-from Redim_image import resize_and_pad
+from ai_models.zegg_counter.Redim_image import resize_and_pad
 
-from config import TARGET_H, TARGET_W, BORDER_MODE, SIGMA
+from ai_models.zegg_counter.config import TARGET_H, TARGET_W, BORDER_MODE, SIGMA
 
 
 class EggDataset(Dataset):

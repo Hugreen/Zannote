@@ -10,5 +10,5 @@ tensorboard/
 events.out.tfevents.*
 ai_models/zegg_counter/models/
 ai_models/zegg_counter/models_backup/
-ai_models/zegg_counter/dataset/images/
-ai_models/zegg_counter/dataset/test/images/
+dataset/images/
+dataset/test/images/

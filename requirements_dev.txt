@@ -4,3 +4,6 @@ pyinstaller
 black
 flake8
 pytest
+albumentations
+matplotlib
+tqdm

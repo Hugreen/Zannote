@@ -7,7 +7,7 @@ sys.path.append('.')
 
 import torch
 import matplotlib.pyplot as plt
-from predictor import Predictor
+from ai_models.zegg_counter.predictor import Predictor
 
 
 # Créer le prédicteur

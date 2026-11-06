@@ -10,7 +10,7 @@ Created on Sat Jun 27 13:04:05 2026
 from pathlib import Path
 import random
 
-from config import (
+from ai_models.zegg_counter.config import (
     IMAGE_PATH,
     TEST_IMAGE_PATH,
     TRAIN_SPLIT,

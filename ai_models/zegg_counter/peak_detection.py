@@ -6,7 +6,7 @@ from scipy.ndimage import (
     maximum_filter
 )
 
-from config import PEAK_THRESHOLD, PEAK_MIN_DISTANCE
+from ai_models.zegg_counter.config import PEAK_THRESHOLD, PEAK_MIN_DISTANCE
 
 
 def detect_peaks(
