@@ -1,35 +1,51 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 19 10:14:56 2026
+# Zannote
 
-@author: hugoz
-"""
+Zannote est un logiciel d'annotation d'images avec comptage assisté par IA (modèle « ZeggCounter »). Il permet d'annoter des images à la main, d'utiliser un modèle pour détecter automatiquement les objets à compter, et d'exporter les résultats en CSV et en tableau récapitulatif Excel.
 
-# Documentation Zannote 
+Des guides détaillés (utilisateur et développeur) sont disponibles dans le dossier [`docs/`](docs/).
 
-## Description des installations à effectuer
-# Installation de Zannote / ZeggCounter
+---
 
-## Prérequis
+## Télécharger l'application
+
+Les versions prêtes à l'emploi sont sur la page des Releases :
+
+➡️ **https://github.com/Hugreen/Zannote/releases/latest**
+
+- **Windows** : télécharger `Zannote_windows_1.0.0.zip`, le décompresser, puis lancer `Zannote.exe`.
+  Windows peut afficher un avertissement SmartScreen (l'application n'est pas signée) : cliquer sur « Informations complémentaires », puis « Exécuter quand même ».
+- **Linux (Ubuntu)** : ⚠️ Téléchargez toutes les parties .part00X dans le même dossier, recollez-les, puis vérifiez le SHA256 avant de décompresser.
+
+Aucune installation de Python n'est nécessaire pour utiliser ces versions.
+
+---
+
+## Utiliser le code source
+
+### Prérequis
 
 * Python 3.11 ou supérieur
 * Git
 * Environ 20 Go d'espace disque libre recommandés
-* Pour l'entraînement : GPU NVIDIA recommandé (CUDA)
-* CPU uniquement possible mais fortement plus lent
+* Pour l'entraînement : GPU NVIDIA recommandé (CUDA). Un CPU suffit pour utiliser l'application, mais l'entraînement y est beaucoup plus lent.
 
----
+### Récupérer le code
 
-## Création de l'environnement Python
+```bash
+git clone https://github.com/Hugreen/Zannote.git
+cd Zannote
+```
 
-### Avec conda
+### Créer l'environnement Python
+
+Avec conda :
 
 ```bash
 conda create -n zannote python=3.11
 conda activate zannote
 ```
 
-### Ou avec venv
+Ou avec venv :
 
 ```bash
 python -m venv zannote_env
@@ -47,15 +63,9 @@ Sous Linux :
 source zannote_env/bin/activate
 ```
 
----
+### Installer PyTorch
 
-## Installation de PyTorch
-
-### GPU NVIDIA (recommandé)
-
-Consulter la commande officielle correspondant à la version CUDA installée :
-
-https://pytorch.org/get-started/locally/
+GPU NVIDIA (recommandé) : consulter la commande officielle correspondant à la version CUDA installée sur https://pytorch.org/get-started/locally/
 
 Exemple :
 
@@ -63,39 +73,13 @@ Exemple :
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 ```
 
-### CPU uniquement
+CPU uniquement :
 
 ```bash
 pip install torch torchvision torchaudio
 ```
 
----
-
-## Installation des dépendances du projet
-
-```bash
-pip install numpy
-pip install pandas
-pip install opencv-python
-pip install albumentations
-pip install scipy
-pip install matplotlib
-pip install tqdm
-pip install pyqt6
-pip install pyqt6-svg
-```
-
-Ou en une seule commande :
-
-```bash
-pip install numpy pandas opencv-python albumentations scipy matplotlib tqdm pyqt6 pyqt6-svg
-```
-
----
-
-## Vérification de PyTorch
-
-Lancer :
+Vérification :
 
 ```python
 import torch
@@ -104,37 +88,69 @@ print(torch.__version__)
 print(torch.cuda.is_available())
 ```
 
-Résultat attendu :
+`True` s'affiche si un GPU CUDA est correctement détecté.
 
-```text
-True
+### Installer les dépendances du projet
+
+```bash
+pip install -r requirements.txt
 ```
 
-si un GPU CUDA est correctement détecté.
+Pour l'entraînement de modèles, ajouter :
+
+```bash
+pip install albumentations matplotlib tqdm
+```
+
+### Lancer l'application
+
+Depuis la racine du dépôt :
+
+```bash
+python main.py
+```
+
+L'application a besoin d'un modèle pour la détection automatique. Télécharger un modèle depuis la page des [Releases](https://github.com/Hugreen/Zannote/releases/latest) et placer son dossier de version (par exemple `V003_epoque_36/`, contenant `best_model.pt`) dans :
+
+```text
+ai_models/zegg_counter/models/
+```
+
+Le modèle apparaît ensuite dans le menu « Utiliser un modèle ».
 
 ---
 
-## Structure attendue du dataset
+## Entraîner un nouveau modèle
+
+L'entraînement se lance en ligne de commande. La page « Entraîner un modèle » de l'application n'est pas encore disponible.
+
+### Où placer les données
+
+Créer le dossier `dataset/` **à la racine du dépôt** (à côté de `main.py`) :
 
 ```text
-dataset/
-
-├── images/
-│   ├── image_001.jpg
-│   ├── image_002.jpg
-│   └── ...
-│
-├── labels/
-│   ├── image_001.csv
-│   ├── image_002.csv
-│   └── ...
-│
-└── test/
+Zannote/
+├── main.py
+└── dataset/
     ├── images/
-    └── labels/
+    │   ├── image_001.jpg
+    │   ├── image_002.jpg
+    │   └── ...
+    ├── labels/
+    │   ├── image_001.csv
+    │   ├── image_002.csv
+    │   └── ...
+    └── test/
+        ├── images/
+        └── labels/
 ```
 
-Chaque CSV doit contenir :
+- Chaque image doit avoir un CSV du même nom (sans l'extension) dans `labels/`.
+- Formats d'image acceptés : `.jpg`, `.jpeg`, `.png`, `.bmp`, `.tif`, `.tiff`.
+- Le dossier `test/images/` doit exister, même vide. Les images qu'il contient sont exclues de l'entraînement et de la validation.
+- Les fichiers `train.txt`, `val.txt` et le dossier `split/` sont générés automatiquement.
+
+Chaque CSV contient les coordonnées de chaque élément annoté :
 
 ```csv
 x,y
@@ -143,31 +159,36 @@ x,y
 742,1051
 ```
 
----
+### Lancer l'entraînement
 
-## Lancement de l'entraînement
+Depuis la racine du dépôt :
 
 ```bash
-python train.py
+python -m ai_models.zegg_counter.train
 ```
 
-Les modèles entraînés sont automatiquement sauvegardés dans :
+Si des modèles existent déjà, le script propose de reprendre depuis le dernier checkpoint, depuis le meilleur, ou de repartir de zéro.
+
+Les modèles entraînés sont sauvegardés automatiquement dans :
 
 ```text
-models/
+ai_models/zegg_counter/models/
 ├── V001/
 ├── V002/
-├── ...
+└── ...
 ```
 
-avec :
+Chaque dossier de version contient notamment `best_model.pt`, `metrics.json`, `metadata.json`, `config.py`, `train_split.txt` et `val_split.txt`. Les modèles ainsi produits sont directement utilisables dans l'application.
 
-```text
-model.pt
-metrics.json
-metadata.json
-config.py
-train_split.txt
-val_split.txt
+---
+
+## Construire l'exécutable
+
+Les fichiers `Zannote_windows.spec` et `Zannote_linux.spec` décrivent la compilation avec PyInstaller :
+
+```bash
+pyinstaller Zannote_windows.spec   # sous Windows
+pyinstaller Zannote_linux.spec     # sous Linux
 ```
 
+L'exécutable est généré dans `dist/`.
