@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-  Application de comptage manuel et automatisé dans une image.
+  Application de comptage manuel et automatisé d'élements d'une image.
 </p>
 
-# Zannote
+## Présentation
 
 Zannote est un logiciel d'annotation d'images avec comptage assisté par IA (modèle « ZeggCounter »). Il permet d'annoter des images à la main, d'utiliser un modèle pour détecter automatiquement les objets à compter, et d'exporter les résultats en CSV et en tableau récapitulatif Excel.
 
