@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use Zannote in your research, please cite this software."
+title: "Zannote"
+type: software
+authors:
+  - family-names: "Zahorsky"
+    given-names: "Hugo"
+version: "1.0.0"
+date-released: "2026-11-6"
+license: MIT
+repository-code: "https://github.com/Hugreen/Zannote"
