@@ -202,3 +202,11 @@ pyinstaller Zannote_linux.spec     # sous Linux
 ```
 
 L'exécutable est généré dans `dist/`.
+
+---
+
+## Licence, affiliations et référencement bibliographique
+
+Pour plus d'informations sur la licence de Zannote, ses affiliations institutionnelles et le référencement recommandée, veuillez consulter sa fiche Zenodo :
+
+https://zenodo.org/records/24354517
