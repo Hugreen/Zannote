@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-message: "If you use Zannote in your research, please cite this software."
+message: "If you use Zannote, please cite it as follows:"
 title: "Zannote"
 type: software
+version: 1.0.1
+date-released: 2026-11-18
+license: MIT
+
 authors:
   - family-names: "Zahorsky"
     given-names: "Hugo"
-version: "1.0.0"
-date-released: "2026-11-18"
-license: MIT
-repository-code: "https://github.com/Hugreen/Zannote"
+    affiliation: "Institut des Sciences de l'Évolution de Montpellier (ISEM), Université de Montpellier, CNRS, IRD, EPHE"
