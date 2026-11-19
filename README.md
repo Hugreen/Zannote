@@ -209,4 +209,4 @@ L'exécutable est généré dans `dist/`.
 
 Pour plus d'informations sur la licence de Zannote, ses affiliations institutionnelles et le référencement recommandée, veuillez consulter sa fiche Zenodo :
 
-https://zenodo.org/records/24354517
+https://zenodo.org/records/24364025
